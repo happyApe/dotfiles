@@ -58,17 +58,18 @@ filetype plugin indent on    " required
 set ignorecase 
 set smartcase
 
-let g:gruvbox_italic=1
-colorscheme gruvbox
-
+" let g:gruvbox_italic=1
+" colorscheme peachpuff
+syntax on
 set background=dark
+highlight Comment ctermfg=DarkGreen
+
 
 set mouse=a
 set number 
 set relativenumber
 set encoding=utf-8
 set backspace=indent,eol,start
-syntax on
 
 " Shortcutting split navigation,saving key press of W : 
 nnoremap <leader>h : wincmd h<CR>
