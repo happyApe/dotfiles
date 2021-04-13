@@ -69,7 +69,6 @@ set mouse=a
 set number 
 set relativenumber
 set encoding=utf-8
-set backspace=indent,eol,start
 
 " Shortcutting split navigation,saving key press of W : 
 nnoremap <leader>h : wincmd h<CR>
@@ -79,10 +78,11 @@ nnoremap <leader>l : wincmd l<CR>
 
 
 set expandtab
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set autoindent smartindent
-set tabstop=4
+set backspace=indent,eol,start
 set nomodeline
 set nowrap
     
