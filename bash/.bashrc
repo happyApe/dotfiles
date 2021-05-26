@@ -119,3 +119,5 @@ export PATH=/Library/Python/3.8/bin:$PATH
 alias open='xdg-open'
 export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 export PATH=$PATH:/snap/bin
+# for fedora clipboard, we can do alias vim='gvim -v' also
+alias vim='vimx' 

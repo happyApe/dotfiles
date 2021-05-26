@@ -1,5 +1,5 @@
 let mapleader = " " 
-" map gA m'ggVG"+y''
+map gA m'ggVG"+y''
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
