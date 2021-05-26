@@ -1,23 +1,5 @@
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-" setup for ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-
-let g:ctrlp_use_caching = 0
-
 let mapleader = " " 
-map gA m'ggVG"+y''
-
-
+" map gA m'ggVG"+y''
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -25,20 +7,19 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
 
 " Keep Plugin commands between vundle#begin/end.
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-commentary'
 Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
 " fzf finder 
-Plugin 'junegunn/fzf',{'do':{->fzf#install()}}
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 
 
