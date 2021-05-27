@@ -121,3 +121,5 @@ export LS_COLORS="$LS_COLORS:ow=1;34:tw=1;34:"
 export PATH=$PATH:/snap/bin
 # for fedora clipboard, we can do alias vim='gvim -v' also
 alias vim='vimx' 
+export VISUAL='vimx'
+export EDITOR='vimx'
