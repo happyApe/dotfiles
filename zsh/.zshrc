@@ -97,3 +97,4 @@ source $ZSH/oh-my-zsh.sh
 alias vim='vimx'
 export EDITOR='vimx'
 alias dictionary='/home/voila/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
+alias startup='/home/voila/Playground/shell_scripts/launch.sh'
