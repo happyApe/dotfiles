@@ -97,6 +97,6 @@ source $ZSH/oh-my-zsh.sh
 alias vim='vimx'
 export EDITOR='vimx'
 alias dictionary='/home/voila/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
-alias startup='/home/voila/Playground/shell_scripts/launch.sh'
+alias startup='/home/voila/Playground/shell_scripts/launch.sh && exit'
 alias work-tmux='/home/voila/Playground/shell_scripts/work-tmux.sh'
 alias fun-tmux='/home/voila/Playground/shell_scripts/fun-tmux.sh'
