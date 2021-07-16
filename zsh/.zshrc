@@ -8,7 +8,13 @@ export ZSH="/home/waveandsmile/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+
+# TO REMOVE DASH LINE from af-magic theme : 
+# Go to ~/.oh-my-zsh/themes/af-magic.zsh-theme    
+# Change the "primary prompt" code part's 1st line to :
+# PS1='$FG[237]%{$reset_color%}
+ZSH_THEME="af-magic" 
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
