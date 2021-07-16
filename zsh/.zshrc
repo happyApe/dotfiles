@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/voila/.oh-my-zsh"
+export ZSH="/home/waveandsmile/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -94,10 +94,27 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vim='vimx'
-export EDITOR='vimx'
-alias dictionary='/home/voila/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
-alias startup='/home/voila/Playground/shell_scripts/launch.sh && exit'
-alias work-tmux='/home/voila/Playground/shell_scripts/work-tmux.sh'
-alias fun-tmux='/home/voila/Playground/shell_scripts/fun-tmux.sh'
-alias round-tmux='/home/voila/Playground/shell_scripts/round-tmux.sh'
+# alias vim='vimx'
+# export EDITOR='vimx'
+export EDITOR='vim'
+alias dictionary='/home/waveandsmile/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
+alias startup='/home/waveandsmile/Playground/shell_scripts/launch.sh && exit'
+alias work-tmux='/home/waveandsmile/Playground/shell_scripts/work-tmux.sh'
+alias fun-tmux='/home/waveandsmile/Playground/shell_scripts/fun-tmux.sh'
+alias round-tmux='/home/waveandsmile/Playground/shell_scripts/round-tmux.sh'
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/waveandsmile/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/waveandsmile/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/waveandsmile/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/waveandsmile/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
