@@ -108,6 +108,7 @@ alias startup='/home/waveandsmile/Playground/shell_scripts/launch.sh && exit'
 alias work-tmux='/home/waveandsmile/Playground/shell_scripts/work-tmux.sh'
 alias fun-tmux='/home/waveandsmile/Playground/shell_scripts/fun-tmux.sh'
 alias round-tmux='/home/waveandsmile/Playground/shell_scripts/round-tmux.sh'
+alias grace-tmux='/home/waveandsmile/Playground/shell_scripts/grace-tmux.sh'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
