@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/waveandsmile/.oh-my-zsh"
+export ZSH="/home/skipper/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -105,23 +105,29 @@ source $ZSH/oh-my-zsh.sh
 # alias vim='vimx'
 # export EDITOR='vimx'
 export EDITOR='vim'
-alias dictionary='/home/waveandsmile/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
-alias startup='/home/waveandsmile/Playground/shell_scripts/launch.sh && exit'
-alias work-tmux='/home/waveandsmile/Playground/shell_scripts/work-tmux.sh'
-alias fun-tmux='/home/waveandsmile/Playground/shell_scripts/fun-tmux.sh'
-alias round-tmux='/home/waveandsmile/Playground/shell_scripts/round-tmux.sh'
-alias grace-tmux='/home/waveandsmile/Playground/shell_scripts/grace-tmux.sh'
+# alias tmux='tmux -u'
+alias dictionary='/home/skipper/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
+alias startup='/home/skipper/Playground/shell_scripts/launch.sh && exit'
+alias work-tmux='/home/skipper/Playground/shell_scripts/work-tmux.sh'
+alias fun-tmux='/home/skipper/Playground/shell_scripts/fun-tmux.sh'
+alias round-tmux='/home/skipper/Playground/shell_scripts/round-tmux.sh'
+alias grace-tmux='/home/skipper/Playground/shell_scripts/grace-tmux.sh'
+
+# For tmux UTF-8 Characters to show up properly
+export LC_ALL=en_IN.UTF-8
+export LANG=en_IN.UTF-8
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/waveandsmile/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/skipper/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/waveandsmile/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/waveandsmile/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/skipper/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/skipper/anaconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/waveandsmile/anaconda3/bin:$PATH"
+        export PATH="/home/skipper/anaconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup

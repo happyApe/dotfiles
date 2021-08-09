@@ -86,3 +86,23 @@ nnoremap <leader>c :set nolist!<CR>
 " Clear the search highlight
 map <silent> \ :silent nohlsearch<CR>
 
+
+
+"Append template to new C++ files
+" Template can be found at my dotfiles repo inside the templates folder
+autocmd BufNewFile *.cpp 0r ~/dotfiles/templates/template.cpp
+
+" These are my keys to compile and run c++ file
+
+" F8 compiles with warnings from input file called as inp
+noremap <F8> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o %< % && ./%< < inp<CR>
+inoremap <F8> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+
+" F9 compiles without warning and without input file i.e from stdinput
+noremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+inoremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+
+" F10 compiles without warning and with input file called as inp
+noremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
+inoremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+
