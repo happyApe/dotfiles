@@ -94,15 +94,27 @@ autocmd BufNewFile *.cpp 0r ~/dotfiles/templates/template.cpp
 
 " These are my keys to compile and run c++ file
 
+
+" F6 compiles without warning and without using address sanitizer from stdinput
+" (Don't use this unless you have to, always use address sanitizer)
+noremap <F6> <ESC> :w <CR> :!g++ -g -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+inoremap <F6> <ESC> :w <CR> :!g++ -g -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%< <CR>
+
+" F7 compiles without warning and with input file called as inp
+noremap <F7> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
+inoremap <F7> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+
 " F8 compiles with warnings from input file called as inp
 noremap <F8> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o %< % && ./%< < inp<CR>
 inoremap <F8> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
 
 " F9 compiles without warning and without input file i.e from stdinput
-noremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
-inoremap <F9> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+noremap <F9> <ESC> :w <CR> :!g++ -g -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
+inoremap <F9> <ESC> :w <CR> :!g++ -g -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< <CR>
 
-" F10 compiles without warning and with input file called as inp
-noremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o %< % && ./%< < inp<CR>
-inoremap <F10> <ESC> :w <CR> :!g++ -fsanitize=address -std=c++17 -Wall -Wextra -Wshadow -DONPC -O2 -o "%<" "%" && "./%<" < inp<CR>
+" Undo file : Maintain undo history between sessions
+" Create a directory first -> 
+" mkdir ~/.vim/undodir
+set undofile
+set undodir=~/.vim/undodir
 

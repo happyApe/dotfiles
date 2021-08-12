@@ -5,7 +5,7 @@ using namespace std;
 typedef long long ll;
 typedef long double ld;
 
-void solve() {
+int solve(vector<int>&nums) {
  
  
 }
@@ -13,9 +13,18 @@ void solve() {
 int32_t main() {
  
     int T = 1;
-//    cin >> T;
+    cin >> T;
     while(T--) {
-        solve();
+        vector<int>nums;
+        int n;
+        cin >>n;
+        int x;
+        for(int i = 0;i<n;i++){
+            cin>>x;
+            nums.push_back(x);
+        }
+        cout<<solve(nums)<<endl;
+
     }
  
 	return 0;
