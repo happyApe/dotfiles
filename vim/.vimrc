@@ -15,6 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Keep Plugin commands between vundle#begin/end.
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'mbbill/undotree'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-commentary'
 Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -86,14 +87,21 @@ nnoremap <leader>c :set nolist!<CR>
 " Clear the search highlight
 map <silent> \ :silent nohlsearch<CR>
 
+" Jump to definition using YCM
+nnoremap ,jd :YcmCompleter GoToDefinition<CR>
+nnoremap ,jl :YcmCompleter GoToDeclaration<CR>
+
 
 
 "Append template to new C++ files
 " Template can be found at my dotfiles repo inside the templates folder
 autocmd BufNewFile *.cpp 0r ~/dotfiles/templates/template.cpp
 
-" These are my keys to compile and run c++ file
+" Undo tree panel toggle
+nnoremap <F5> :UndotreeToggle<CR>
 
+
+" These are my keys to compile and run c++ file
 
 " F6 compiles without warning and without using address sanitizer from stdinput
 " (Don't use this unless you have to, always use address sanitizer)

@@ -120,6 +120,8 @@ alias work-tmux='/home/skipper/Playground/shell_scripts/work-tmux.sh'
 alias fun-tmux='/home/skipper/Playground/shell_scripts/fun-tmux.sh'
 alias round-tmux='/home/skipper/Playground/shell_scripts/round-tmux.sh'
 alias grace-tmux='/home/skipper/Playground/shell_scripts/grace-tmux.sh'
+alias acd-tmux='/home/skipper/Playground/shell_scripts/acd-tmux.sh'
+alias scaletorch-tmux='/home/skipper/Playground/shell_scripts/scaletorch-tmux.sh'
 
 # For tmux UTF-8 Characters to show up properly
 export LC_ALL=en_IN.UTF-8
