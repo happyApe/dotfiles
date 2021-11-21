@@ -58,6 +58,20 @@ nnoremap <leader>j : wincmd j<CR>
 nnoremap <leader>k : wincmd k<CR>
 nnoremap <leader>l : wincmd l<CR>
 
+" Y doing the job like C or D to yank from starting of cursor
+" to end of the line
+nnoremap Y : y$
+
+" Undo break points
+inoremap , ,<c-g>u
+inoremap . .<c-g>u
+inoremap ! !<c-g>u
+inoremap ? ?<c-g>u
+inoremap [ [<c-g>u
+
+" Jumplist mutations
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 
 set expandtab
 set tabstop=4
