@@ -114,6 +114,10 @@ autocmd BufNewFile *.cpp 0r ~/dotfiles/templates/template.cpp
 " Undo tree panel toggle
 nnoremap <F5> :UndotreeToggle<CR>
 
+" For Python 
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
 
 " These are my keys to compile and run c++ file
 
