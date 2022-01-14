@@ -1,30 +1,14 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/skipper/.oh-my-zsh"
+export ZSH="/Users/smartyape/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# TO REMOVE DASH LINE from af-magic theme : 
-# Go to ~/.oh-my-zsh/themes/af-magic.zsh-theme    
-# Change the "primary prompt" code part's 1st line to :
-# PS1='$FG[237]%{$reset_color%}
-# ZSH_THEME="af-magic" 
-
-
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -52,7 +36,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
-DISABLE_LS_COLORS="true"
+# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -112,36 +96,33 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 # alias vim='vimx'
 # export EDITOR='vimx'
-export EDITOR='vim'
+# export EDITOR='vim'
 # alias tmux='tmux -u'
-alias dictionary='/home/skipper/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
-alias startup='/home/skipper/Playground/shell_scripts/launch.sh && exit'
-alias work-tmux='/home/skipper/Playground/shell_scripts/work-tmux.sh'
-alias fun-tmux='/home/skipper/Playground/shell_scripts/fun-tmux.sh'
-alias round-tmux='/home/skipper/Playground/shell_scripts/round-tmux.sh'
-alias grace-tmux='/home/skipper/Playground/shell_scripts/grace-tmux.sh'
-alias acd-tmux='/home/skipper/Playground/shell_scripts/acd-tmux.sh'
-alias scaletorch-tmux='/home/skipper/Playground/shell_scripts/scaletorch-tmux.sh'
+alias dictionary='/Users/smartyape/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
+alias startup='/Users/smartyape/Playground/shell_scripts/launch.sh && exit'
+alias work-tmux='/Users/smartyape/Playground/shell_scripts/work-tmux.sh'
+alias fun-tmux='/Users/smartyape/Playground/shell_scripts/fun-tmux.sh'
+alias round-tmux='/Users/smartyape/Playground/shell_scripts/round-tmux.sh'
+alias grace-tmux='/Users/smartyape/Playground/shell_scripts/grace-tmux.sh'
+alias acd-tmux='/Users/smartyape/Playground/shell_scripts/acd-tmux.sh'
+alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/scaletorch-tmux.sh'
 
 # For tmux UTF-8 Characters to show up properly
-export LC_ALL=en_IN.UTF-8
-export LANG=en_IN.UTF-8
-
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/skipper/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/smartyape/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/skipper/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/skipper/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/smartyape/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/smartyape/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/skipper/anaconda3/bin:$PATH"
+        export PATH="/Users/smartyape/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

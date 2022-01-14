@@ -3,6 +3,10 @@ map gA m'ggVG"+y''
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" fast scrolling
+set ttyfast
+set lazyredraw
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
