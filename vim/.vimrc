@@ -62,10 +62,6 @@ nnoremap <leader>j : wincmd j<CR>
 nnoremap <leader>k : wincmd k<CR>
 nnoremap <leader>l : wincmd l<CR>
 
-" Y doing the job like C or D to yank from starting of cursor
-" to end of the line
-nnoremap Y : y$
-
 " Undo break points
 inoremap , ,<c-g>u
 inoremap . .<c-g>u
@@ -108,6 +104,9 @@ map <silent> \ :silent nohlsearch<CR>
 " Jump to definition using YCM
 nnoremap ,jd :YcmCompleter GoToDefinition<CR>
 nnoremap ,jl :YcmCompleter GoToDeclaration<CR>
+
+" YCM will auto-close the preview window after the user leaves insert mode
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 
 
