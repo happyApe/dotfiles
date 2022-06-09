@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # export EDITOR='vimx'
 # export EDITOR='vim'
 # alias tmux='tmux -u'
-alias dictionary='/Users/smartyape/Playground/Automate\ Boring\ Stuff/WebScraping/dictionary.py'
+alias vocab='/Users/smartyape/Playground/Build-My-Vocab/vocab.py'
 alias startup='/Users/smartyape/Playground/shell_scripts/launch.sh && exit'
 alias work-tmux='/Users/smartyape/Playground/shell_scripts/work-tmux.sh'
 alias fun-tmux='/Users/smartyape/Playground/shell_scripts/fun-tmux.sh'
@@ -125,3 +125,4 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+#
