@@ -41,6 +41,7 @@ require('packer').startup(function()
     }
     use 'nvim-telescope/telescope-fzy-native.nvim'
     use { "nvim-telescope/telescope-file-browser.nvim" }
+    use { 'nvim-telescope/telescope-project.nvim' }
     use {
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- Install Hack-Nerd Font for your terminal
@@ -132,7 +133,16 @@ require('telescope').setup()
 require("telescope").load_extension("git_worktree")
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("file_browser")
+require("telescope").load_extension("project")
 require('neogit').setup()
+
+require('telescope').setup{
+    pickers = {
+        find_files = {
+            theme = "dropdown",
+        }
+    }
+}
 
 require('gitsigns').setup{
   numhl = true,
@@ -376,7 +386,8 @@ map('n', '<leader>ve', ':e ~/.config/nvim/init.lua<CR>') -- Edit
 map('n', '<leader>ff', ':Telescope find_files<CR>')
 map('n', '<leader>fg', ':Telescope live_grep<CR>')
 map('n', '<leader>fs', ':Telescope grep_string<CR>')  -- needs ripgrep
-map('n', '<leader>fb', ':Telescope file_browser<CR>')
+map('n', '<leader>fb', ':Telescope file_browser<CR>') -- for file browsing
+map('n', '<leader>fp', ':Telescope project<CR>') -- for project management
 map('n', '<leader>bf', ':Telescope buffers<CR>')
 map('n', '<leader>gs', ':Telescope git_status<CR>')
 map('n', '<leader>gl', ':Telescope git_commits<CR>')
