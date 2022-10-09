@@ -1,12 +1,18 @@
-### Use GNU Stow to manage dotfiles ###
+## GNU Stow to manage dotfiles ###
 
-Usage :
+### Usage :
 
 ```stow <dir_name> ```
 this will create a symlink at approriate place for the respective dotfile
 
 
-Notes for Nvim : 
+### Neovim Setup Requirements:
+- [Packer.nvim](https://github.com/wbthomason/packer.nvim): used as a package/plugin manager for nvim
+- After installation, Execute `:PackerInstall` in Normal Mode
+- Source the config for first time, by executing `:so %` in the init.lua file
+- Congrats! You are ready to vim the world
+
+#### Notes for Nvim : 
 
 - If you are on macos, gitsigns pulgin will be a problem for maxfiles limit. To solve this run the following command
 
