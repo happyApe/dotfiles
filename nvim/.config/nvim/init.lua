@@ -21,13 +21,13 @@ require('packer').startup(function()
     use { "ellisonleao/gruvbox.nvim" }
     use 'folke/tokyonight.nvim'
     use 'bluz71/vim-moonfly-colors'
-    -- use 'b3nj5m1n/kommentary' -- For comments
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    use 'b3nj5m1n/kommentary' -- For comments
+    -- use {
+    --     'numToStr/Comment.nvim',
+    --     config = function()
+    --         require('Comment').setup()
+    --     end
+    -- }
     use 'mg979/vim-visual-multi' -- For multi selection
     use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
@@ -217,13 +217,13 @@ require('formatter').setup{
   }
 }
 -- Format filetypes on save
-vim.api.nvim_exec([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.py,*.yaml,*.yml FormatWrite
-augroup END
-]], true)
-
+-- vim.api.nvim_exec([[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.py,*.yaml,*.yml FormatWrite
+-- augroup END
+-- ]], true)
+--
 -------- Globals --------------
 g.mapleader = " "                 -- Set space as leader key
 
@@ -374,7 +374,8 @@ map('n', '<leader>l', ':wincmd l<CR>')
 map('n', '<leader>p', ':bp<CR>')
 map('n', '<leader>n', ':bn<CR>')
 map('n', '<leader>bb', ':b#<CR>')
-map('n', '<leader>bd', ':bd<CR>')
+map('n', '<leader>q', ':bd<CR>')
+
 
 map('n', 'gA', 'ggVG"+y') -- If this doesn't work change + to *
 map('n', 'gY', 'ggVGy') -- If this doesn't work change + to *
@@ -416,3 +417,4 @@ vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
 vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
 vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
 vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+
