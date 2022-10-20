@@ -407,6 +407,9 @@ map('n', '<leader>/', ':HopPattern<CR>')
 map('n', '<leader>w', ':HopWord<CR>')
 map('n', '<leader>tt', ':TroubleToggle<CR>')
 map('n', '<leader>td', ':ToggleDiag<CR>') -- Toggle the diagnostics
+map('n', '<leader>gc', ':Gitsigns toggle_linehl<CR>') -- Toggle the diagnostics
+
+
 
 
 --- Kapitan compile map ---
