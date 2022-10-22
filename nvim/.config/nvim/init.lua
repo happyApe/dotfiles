@@ -120,6 +120,18 @@ require("gruvbox").setup({
   transparent_mode = false,
 })
 
+require("nightfox").setup({
+  palettes = {
+
+    carbonfox = {
+        bg1 = "#0c0c0c", -- Blackish background
+        sel0 = "#3e4a5b", -- Popup bg, visual selection bg
+        sel1 = "#4f6074", -- Popup sel bg, search bg
+        -- comment = "#E1C16E",
+    },
+  },
+})
+
 cmd("colorscheme carbonfox")
 -- cmd("colorscheme tokyonight-night")
 -- cmd("colorscheme gruvbox")
