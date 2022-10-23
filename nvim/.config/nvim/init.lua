@@ -30,6 +30,13 @@ require('packer').startup(function()
     -- }
     use 'mg979/vim-visual-multi' -- For multi selection
     use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/nvim-compe'
@@ -197,6 +204,26 @@ require("bufferline").setup{
   }
 }
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
 
 -------- Formatter ------------
 require('formatter').setup{
@@ -422,6 +449,9 @@ map('n', '<leader>td', ':ToggleDiag<CR>') -- Toggle the diagnostics
 map('n', '<leader>gc', ':Gitsigns toggle_linehl<CR>') -- Toggle the diagnostics
 
 
+--- Nvim Tree ---
+map('n', '<leader>T', ':NvimTreeToggle<CR>') -- Toggle the NvimTree
+map('n', '<leader>Tr', ':NvimTreeRefresh<CR>') -- Toggle the NvimTree
 
 
 --- Kapitan compile map ---
