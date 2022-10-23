@@ -128,15 +128,36 @@ require("gruvbox").setup({
 })
 
 require("nightfox").setup({
-  palettes = {
-
-    carbonfox = {
-        bg1 = "#0c0c0c", -- Blackish background
-        sel0 = "#3e4a5b", -- Popup bg, visual selection bg
-        sel1 = "#4f6074", -- Popup sel bg, search bg
-        -- comment = "#E1C16E",
+    options = {
+        styles = {
+            comments = "italic",
+            functions = "bold",
+            -- constants = "italic",
+            -- keywords = "standout",
+        }
     },
-  },
+    specs = {
+        all = {
+            syntax = {
+                keyword = "#FFFA3E",
+                func = "#00FFFF",
+                string = "#EE7FF8",
+                number = "#9300FF",
+                conditional  = "#E77C0C",
+                variable = "#F22B14",
+                operator = "#27FF00",
+                comment = "#56BD37"
+            },
+        }
+    },
+    palettes = {
+        carbonfox = {
+            bg1 = "#0c0c0c", -- Blackish background
+            sel0 = "#3e4a5b", -- Popup bg, visual selection bg
+            sel1 = "#4f6074", -- Popup sel bg, search bg
+            -- comment = "#E1C16E",
+        },
+    },
 })
 
 cmd("colorscheme carbonfox")
