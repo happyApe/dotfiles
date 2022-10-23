@@ -145,14 +145,14 @@ require("nightfox").setup({
                 number = "#9300FF",
                 conditional  = "#E77C0C",
                 variable = "#F22B14",
-                operator = "#27FF00",
+                operator = "#FFFA3E",
                 comment = "#56BD37"
             },
         }
     },
     palettes = {
         carbonfox = {
-            bg1 = "#0c0c0c", -- Blackish background
+            bg1 = "#000000", -- Pure Black background babyy
             sel0 = "#3e4a5b", -- Popup bg, visual selection bg
             sel1 = "#4f6074", -- Popup sel bg, search bg
             -- comment = "#E1C16E",
@@ -321,8 +321,8 @@ local on_attach = function(_, bufnr)
 
   local opts = { noremap = true, silent = true }
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ',jd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', ',jr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ',jd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts) -- Jump to definition
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', ',jr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts) -- Jump to it's references
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gR', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts) -- Renaming all references
   -- vim.api.nvim_buf_set_keymap(bufnr, 'n', ',st', '<Cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>', opts) -- Stop client
@@ -425,30 +425,31 @@ end
 
 
 ------- Mappings -----------
+--- For Window Navigation ---
 map('n', '<leader>h', ':wincmd h<CR>')
 map('n', '<leader>j', ':wincmd j<CR>')
 map('n', '<leader>k', ':wincmd k<CR>')
 map('n', '<leader>l', ':wincmd l<CR>')
 
---- Buffers ---
+--- For Buffer Navigations ---
 map('n', '<leader>p', ':bp<CR>')
 map('n', '<leader>n', ':bn<CR>')
 map('n', '<leader>bb', ':b#<CR>')
 map('n', '<leader>q', ':bd<CR>')
 
 
-map('n', 'gA', 'ggVG"+y') -- If this doesn't work change + to *
-map('n', 'gY', 'ggVGy') -- If this doesn't work change + to *
+map('n', 'gA', 'ggVG"+y') -- If this doesn't work change + to * -- Copy all to Clipboard
+map('n', 'gY', 'ggVGy') -- If this doesn't work change + to * -- Copy/Yank all to Vim's clipboard
 
-map('n', '<leader>vl', ':so ~/.config/nvim/init.lua<CR>') -- Source
-map('n', '<leader>ve', ':e ~/.config/nvim/init.lua<CR>') -- Edit
+map('n', '<leader>vl', ':so ~/.config/nvim/init.lua<CR>') -- Source the nvim config
+map('n', '<leader>ve', ':e ~/.config/nvim/init.lua<CR>') -- Edit the nvim config
 
 --- Telescope ---
 map('n', '<leader>ff', ':Telescope find_files<CR>')
 map('n', '<leader>fg', ':Telescope live_grep<CR>')
 map('n', '<leader>fs', ':Telescope grep_string<CR>')  -- needs ripgrep
 map('n', '<leader>fb', ':Telescope file_browser<CR>') -- for file browsing
-map('n', '<leader>fp', ':Telescope project<CR>') -- for project management
+map('n', '<leader>fp', ':Telescope project<CR>') -- for project management -- (In normal mode, press c to create a project for your working dir)
 map('n', '<leader>bf', ':Telescope buffers<CR>')
 map('n', '<leader>gs', ':Telescope git_status<CR>')
 map('n', '<leader>gl', ':Telescope git_commits<CR>')
