@@ -100,12 +100,12 @@ source $ZSH/oh-my-zsh.sh
 # alias tmux='tmux -u'
 alias vocab='/Users/smartyape/Playground/Build-My-Vocab/vocab.py'
 alias startup='/Users/smartyape/Playground/shell_scripts/launch.sh && exit'
-alias work-tmux='/Users/smartyape/Playground/shell_scripts/work-tmux.sh'
-alias fun-tmux='/Users/smartyape/Playground/shell_scripts/fun-tmux.sh'
-alias round-tmux='/Users/smartyape/Playground/shell_scripts/round-tmux.sh'
-alias grace-tmux='/Users/smartyape/Playground/shell_scripts/grace-tmux.sh'
-alias acd-tmux='/Users/smartyape/Playground/shell_scripts/acd-tmux.sh'
-alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/scaletorch-tmux.sh'
+alias work-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/work-tmux.sh'
+alias fun-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/fun-tmux.sh'
+alias round-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/round-tmux.sh'
+alias grace-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/grace-tmux.sh'
+alias acd-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/acd-tmux.sh'
+alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
 
 # For tmux UTF-8 Characters to show up properly
 export LC_ALL=en_US.UTF-8
