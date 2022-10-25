@@ -141,7 +141,7 @@ require("nightfox").setup({
             syntax = {
                 keyword = "#FFFA3E",
                 func = "#00FFFF",
-                string = "#EE7FF8",
+                string = "#EE7EF8",
                 number = "#9300FF",
                 conditional  = "#E77C0C",
                 variable = "#F22B14",
