@@ -21,6 +21,9 @@ require('packer').startup(function()
     use { "ellisonleao/gruvbox.nvim" }
     use 'folke/tokyonight.nvim'
     use 'bluz71/vim-moonfly-colors'
+    use {
+    "williamboman/nvim-lsp-installer",
+    }
     use 'b3nj5m1n/kommentary' -- For comments
     -- use {
     --     'numToStr/Comment.nvim',
@@ -245,6 +248,8 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
+require("nvim-lsp-installer").setup {} 
 
 -------- Formatter ------------
 require('formatter').setup{
