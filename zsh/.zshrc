@@ -106,10 +106,12 @@ alias round-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/round-t
 alias grace-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/grace-tmux.sh'
 alias acd-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/acd-tmux.sh'
 alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
+alias rr='ranger'
 
 # For tmux UTF-8 Characters to show up properly
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -126,3 +128,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 #
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
