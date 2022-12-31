@@ -108,6 +108,9 @@ alias acd-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/acd-tmux.
 alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
 alias rr='ranger'
 
+# For using tab to autocomplete
+bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+
 # For tmux UTF-8 Characters to show up properly
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

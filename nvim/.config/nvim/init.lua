@@ -50,6 +50,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
+  use "EdenEast/nightfox.nvim" -- colorscheme 
+
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -61,6 +63,9 @@ require('packer').startup(function(use)
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+
+  -- File Browser with Telescope
+  use {'nvim-telescope/telescope-file-browser.nvim'}
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -94,6 +99,40 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
+-- Old vim color scheme setup
+require("nightfox").setup({
+    options = {
+        styles = {
+            comments = "italic",
+            functions = "bold",
+            -- constants = "italic",
+            -- keywords = "standout",
+        }
+    },
+    specs = {
+        all = {
+            syntax = {
+                keyword = "#FFFA3E",
+                func = "#00FFFF",
+                string = "#EE7EF8",
+                number = "#9300FF",
+                conditional  = "#E77C0C",
+                variable = "#FFFFFF",
+                operator = "#FFFA3E",
+                comment = "#56BD37"
+            },
+        }
+    },
+    palettes = {
+        carbonfox = {
+            bg1 = "#000000", -- Pure Black background babyy
+            sel0 = "#3e4a5b", -- Popup bg, visual selection bg
+            sel1 = "#4f6074", -- Popup sel bg, search bg
+            -- comment = "#E1C16E",
+        },
+    },
+})
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -122,6 +161,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
+-- vim.cmd [[colorscheme carbonfox]]  -- Like the old vim colors
 vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
@@ -197,9 +237,16 @@ require('telescope').setup {
       },
     },
     file_ignore_patterns = {
-      "miniconda"
+      "miniconda",
+      "Library",
+      "venv"
     }
   },
+  extensions = {
+    file_browser = {
+      theme = "ivy"
+    }
+  }
 }
 
 -- Enable telescope fzf native, if installed
@@ -221,6 +268,9 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>fb', require('telescope').extensions.file_browser.file_browser, { desc = '[F]ile [B]rowser' })
+vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, {desc = '[G]it [B]ranches'})
+
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
