@@ -29,3 +29,7 @@ this will create a symlink at approriate place for the respective dotfile
 - Create a undo dir for persistent undo 
 
     ```mkdir ~/.config/nvim/undodir```
+
+### For Karabiner:
+
+- Copy the contents of karabiner/.config/karabiner to the ~/.config/karabiner/ folder
