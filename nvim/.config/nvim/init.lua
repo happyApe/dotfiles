@@ -38,6 +38,9 @@ require('packer').startup(function(use)
     end,
   }
 
+  -- Hop easily
+  use 'phaazon/hop.nvim'
+
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
@@ -142,6 +145,9 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
+-- Relative line number
+vim.o.relativenumber = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -203,6 +209,10 @@ require('lualine').setup {
     section_separators = '',
   },
 }
+
+
+require('hop').setup()
+vim.keymap.set('n', '<leader>H', ':HopWord<CR>')
 
 -- Enable Comment.nvim
 require('Comment').setup()
