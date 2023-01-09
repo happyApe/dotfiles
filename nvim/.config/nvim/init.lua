@@ -41,6 +41,16 @@ require('packer').startup(function(use)
   -- Hop easily
   use 'phaazon/hop.nvim'
 
+  -- undotree
+  use 'mbbill/undotree'
+
+  use {
+  'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+  }
+
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
     after = 'nvim-treesitter',
@@ -102,6 +112,28 @@ vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = vim.fn.expand '$MYVIMRC',
 })
 
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    adaptive_size = true,
+    mappings = {
+      list = {
+        { key = "u", action = "dir_up" },
+      },
+    },
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = false,
+  },
+})
+
 -- Old vim color scheme setup
 require("nightfox").setup({
     options = {
@@ -139,6 +171,9 @@ require("nightfox").setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- enable buffers
+vim.o.hidden = true
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -152,7 +187,10 @@ vim.o.relativenumber = true
 vim.o.mouse = 'a'
 
 -- Enable break indent
-vim.o.breakindent = true
+-- vim.o.breakindent = true
+
+-- Better search functionality
+vim.o.incsearch = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -213,6 +251,8 @@ require('lualine').setup {
 
 require('hop').setup()
 vim.keymap.set('n', '<leader>H', ':HopWord<CR>')
+
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 -- Enable Comment.nvim
 require('Comment').setup()
@@ -288,8 +328,8 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help' },
 
-  highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
+  highlight = { enable = true, disable = {'python'} },
+  indent = { enable = true, disable = { "python"} },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -499,6 +539,8 @@ vim.keymap.set('n', 'gA', 'ggVG"+y') -- If this doesn't work change + to * -- Co
 vim.keymap.set('n', 'gY', 'ggVGy') -- If this doesn't work change + to * -- Copy all to Clipboard
 
 vim.keymap.set('n', '<leader>gv', ':Gitsigns toggle_linehl<CR>') -- Toggle the diagnostics
+vim.keymap.set('n', '<leader>R', ':w<CR>:!python3 %<CR>') -- Run python3 file 
+vim.keymap.set('n', '<leader>T', ':NvimTreeToggle<CR>')
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-

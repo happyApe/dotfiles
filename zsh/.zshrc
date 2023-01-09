@@ -133,3 +133,13 @@ unset __conda_setup
 #
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+RPROMPT="%D{%L:%M:%S}"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/completion.zsh.inc'; fi
+
+# poetry
+export PATH="/Users/smartyape/.local/bin:$PATH"
