@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,7 @@ export ZSH="/Users/smartyape/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -107,6 +114,7 @@ alias grace-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/grace-t
 alias acd-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/acd-tmux.sh'
 alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
 alias rr='ranger'
+alias dkc='docker-compose'
 
 # For using tab to autocomplete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
@@ -133,7 +141,6 @@ unset __conda_setup
 #
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-RPROMPT="%D{%L:%M:%S}"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/path.zsh.inc'; fi
@@ -143,3 +150,20 @@ if [ -f '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/completi
 
 # poetry
 export PATH="/Users/smartyape/.local/bin:$PATH"
+
+
+# Requires https://github.com/caarlos0/timer to be installed
+# brew install caarlos0/tap/timer
+# brew install terminal-notifier
+
+# Mac setup for pomo
+alias work="timer 60m && terminal-notifier -message 'Pomodoro'\
+        -title 'Work Timer is up! Take a Break 😌'\
+        -sound Crystal"
+        
+alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
+        -title 'Break is over! Get back to work 🤓'\
+        -sound Heroine"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
