@@ -44,12 +44,23 @@ require('packer').startup(function(use)
   -- undotree
   use 'mbbill/undotree'
 
+
+  -- formatter
+  use { 'mhartington/formatter.nvim' }
+
+  -- Diagnostic toggler
+  use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
+
   use {
-  'nvim-tree/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     requires = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
   }
+
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end }
 
   use { -- Additional text objects via treesitter
     'nvim-treesitter/nvim-treesitter-textobjects',
@@ -63,7 +74,7 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use "EdenEast/nightfox.nvim" -- colorscheme 
+  use "EdenEast/nightfox.nvim" -- colorscheme
 
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
@@ -78,7 +89,7 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
   -- File Browser with Telescope
-  use {'nvim-telescope/telescope-file-browser.nvim'}
+  use { 'nvim-telescope/telescope-file-browser.nvim' }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -136,36 +147,36 @@ require("nvim-tree").setup({
 
 -- Old vim color scheme setup
 require("nightfox").setup({
-    options = {
-        styles = {
-            comments = "italic",
-            functions = "bold",
-            -- constants = "italic",
-            -- keywords = "standout",
-        }
+  options = {
+    styles = {
+      comments = "italic",
+      functions = "bold",
+      -- constants = "italic",
+      -- keywords = "standout",
+    }
+  },
+  specs = {
+    all = {
+      syntax = {
+        keyword     = "#FFFA3E",
+        func        = "#00FFFF",
+        string      = "#EE7EF8",
+        number      = "#9300FF",
+        conditional = "#E77C0C",
+        variable    = "#FFFFFF",
+        operator    = "#FFFA3E",
+        comment     = "#56BD37"
+      },
+    }
+  },
+  palettes = {
+    carbonfox = {
+      bg1 = "#000000", -- Pure Black background babyy
+      sel0 = "#3e4a5b", -- Popup bg, visual selection bg
+      sel1 = "#4f6074", -- Popup sel bg, search bg
+      -- comment = "#E1C16E",
     },
-    specs = {
-        all = {
-            syntax = {
-                keyword = "#FFFA3E",
-                func = "#00FFFF",
-                string = "#EE7EF8",
-                number = "#9300FF",
-                conditional  = "#E77C0C",
-                variable = "#FFFFFF",
-                operator = "#FFFA3E",
-                comment = "#56BD37"
-            },
-        }
-    },
-    palettes = {
-        carbonfox = {
-            bg1 = "#000000", -- Pure Black background babyy
-            sel0 = "#3e4a5b", -- Popup bg, visual selection bg
-            sel1 = "#4f6074", -- Popup sel bg, search bg
-            -- comment = "#E1C16E",
-        },
-    },
+  },
 })
 
 -- [[ Setting options ]]
@@ -175,7 +186,7 @@ require("nightfox").setup({
 vim.o.hidden = true
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -205,7 +216,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme carbonfox]]  -- Like the old vim colors
+vim.cmd [[colorscheme carbonfox]] -- Like the old vim colors
 -- vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
@@ -318,8 +329,9 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[F]ind by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>fb', require('telescope').extensions.file_browser.file_browser, { desc = '[F]ile [B]rowser' })
-vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, {desc = '[G]it [B]ranches'})
+vim.keymap.set('n', '<leader>fb', require('telescope').extensions.file_browser.file_browser,
+  { desc = '[F]ile [B]rowser' })
+vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = '[G]it [B]ranches' })
 
 
 -- [[ Configure Treesitter ]]
@@ -328,8 +340,8 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help' },
 
-  highlight = { enable = true, disable = {'python'} },
-  indent = { enable = true, disable = { "python"} },
+  highlight = { enable = true, disable = { 'python' } },
+  indent = { enable = true, disable = { "python" } },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -436,6 +448,44 @@ local on_attach = function(_, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
+-------- Formatter ------------
+require('formatter').setup {
+  filetype = {
+    python = {
+      function()
+        return {
+          exe = "black",
+          args = { '-l', '99', '-' },
+          stdin = true
+        }
+      end,
+      function()
+        return {
+          exe = "isort",
+          args = { '-' },
+          stdin = true
+        }
+      end
+    },
+    yaml = {
+      function()
+        return {
+          exe = "yamlfix",
+          args = { '-' },
+          stdin = true
+        }
+      end
+    }
+  }
+}
+-- Format filetypes on save
+-- vim.api.nvim_exec([[
+-- augroup FormatAutogroup
+--   autocmd!
+--   autocmd BufWritePost *.py,*.yaml,*.yml FormatWrite
+-- augroup END
+-- ]], true)
+
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
 --
@@ -444,11 +494,11 @@ end
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  -- pyright = {},
+  pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
@@ -529,6 +579,15 @@ cmp.setup {
   },
 }
 
+require('toggle_lsp_diagnostics').init({ start_on = true },
+  { underline = true, virtual_text = { prefix = "XXX", spacing = 5 } }) -- Toggle LSP linter
+
+require("toggleterm").setup{
+  -- size can be a number or function which is passed the current terminal
+  open_mapping = [[<c-\>]],
+  direction = 'float'
+}
+
 vim.keymap.set('n', '<leader>h', ':wincmd h<CR>')
 vim.keymap.set('n', '<leader>j', ':wincmd j<CR>')
 vim.keymap.set('n', '<leader>k', ':wincmd k<CR>')
@@ -539,8 +598,11 @@ vim.keymap.set('n', 'gA', 'ggVG"+y') -- If this doesn't work change + to * -- Co
 vim.keymap.set('n', 'gY', 'ggVGy') -- If this doesn't work change + to * -- Copy all to Clipboard
 
 vim.keymap.set('n', '<leader>gv', ':Gitsigns toggle_linehl<CR>') -- Toggle the diagnostics
-vim.keymap.set('n', '<leader>R', ':w<CR>:!python3 %<CR>') -- Run python3 file 
+vim.keymap.set('n', '<leader>R', ':w<CR>:!python3 %<CR>') -- Run python3 file
 vim.keymap.set('n', '<leader>T', ':NvimTreeToggle<CR>')
+
+vim.keymap.set('n', '<leader>td', ':ToggleDiag<CR>') -- Toggle the diagnostics
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
