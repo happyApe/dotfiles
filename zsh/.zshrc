@@ -115,6 +115,7 @@ alias acd-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/acd-tmux.
 alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
 alias rr='ranger'
 alias dkc='docker-compose'
+alias dkpa='docker ps -a'
 
 # For using tab to autocomplete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
