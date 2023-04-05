@@ -116,6 +116,16 @@ alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/sc
 alias rr='ranger'
 alias dkc='docker-compose'
 alias dkpa='docker ps -a'
+# Git related
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gl='git log'
+alias gr='git restore'
+alias gco='git checkout'
+alias gp='git pull'
+alias gph='git push'
 
 # For using tab to autocomplete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
@@ -168,3 +178,5 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export VISUAL=nvim
+export EDITOR="$VISUAL"
