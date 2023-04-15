@@ -603,6 +603,7 @@ vim.keymap.set('n', '<leader>T', ':NvimTreeToggle<CR>')
 
 vim.keymap.set('n', '<leader>td', ':ToggleDiag<CR>') -- Toggle the diagnostics
 
+vim.keymap.set('n', '<leader>fw', ':FormatWrite<CR>') -- Format Write
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
