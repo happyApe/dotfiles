@@ -45,6 +45,11 @@ require('packer').startup(function(use)
   use 'mbbill/undotree'
 
 
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
+
   -- formatter
   use { 'mhartington/formatter.nvim' }
 
@@ -75,8 +80,9 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
 
   use "EdenEast/nightfox.nvim" -- colorscheme
+  use { "ellisonleao/gruvbox.nvim" } -- gruvbox
+  use {"sainnhe/gruvbox-material"}
 
-  use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -86,10 +92,15 @@ require('packer').startup(function(use)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
-  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+
 
   -- File Browser with Telescope
   use { 'nvim-telescope/telescope-file-browser.nvim' }
+
+  -- Spectre for search and replace
+  use {'nvim-pack/nvim-spectre', requires = { 'nvim-lua/plenary.nvim' } }
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -131,11 +142,6 @@ require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
     adaptive_size = true,
-    mappings = {
-      list = {
-        { key = "u", action = "dir_up" },
-      },
-    },
   },
   renderer = {
     group_empty = true,
@@ -216,8 +222,37 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme carbonfox]] -- Like the old vim colors
+-- vim.cmd [[colorscheme carbonfox]] -- Like the old vim colors
 -- vim.cmd [[colorscheme onedark]]
+
+
+-- setup must be called before loading the colorscheme
+-- Default options:
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = {
+    strings = true,
+    comments = true,
+    operators = false,
+    folds = true,
+  },
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {},
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -253,7 +288,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'carbonfox',
+    theme = 'gruvbox-material',
     component_separators = '|',
     section_separators = '',
   },
@@ -291,27 +326,53 @@ require('gitsigns').setup {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    sorting_strategy = 'descending',
+    path_display = { "truncate " },
+
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ["<C-j>"] = require('telescope.actions').move_selection_next,
+        ["<C-k>"] = require('telescope.actions').move_selection_previous,
+
       },
     },
     file_ignore_patterns = {
       "miniconda",
       "Library",
-      "venv"
+      "venv",
     }
   },
   extensions = {
     file_browser = {
       theme = "ivy"
+    },
+    fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true,  -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case",        -- or "ignore_case" or "respect_case" -- the default case_mode is "smart_case"
+    }
+},
+
+  pickers = {
+    find_files = {
+      find_command = {
+        "rg",
+        "--files",
+        "--glob",
+        "!**/.git/*",
+        -- "--hidden",
+      },
     }
   }
 }
 
 -- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
+require('telescope').load_extension('fzf')
+
+
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -332,6 +393,43 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader>fb', require('telescope').extensions.file_browser.file_browser,
   { desc = '[F]ile [B]rowser' })
 vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = '[G]it [B]ranches' })
+
+-- Spectre Setup
+require('spectre').setup({
+  live_update = true,
+  -- ['run_replace'] = {
+  --   map = "<leader>SR",
+  --   cmd = "<cmd>lua require('spectre.actions').run_replace()<CR>",
+  --   desc = "replace all"
+  -- },
+  find_engine = {
+    ['rg'] = {
+      cmd = "rg",
+      args = {
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--pcre2',
+      } ,
+      options = {
+        ['ignore-case'] = {
+          value= "--ignore-case",
+          icon="[I]",
+          desc="ignore case"
+        },
+        ['hidden'] = {
+          value="--hidden",
+          desc="hidden file",
+          icon="[H]"
+        },
+        -- you can put any rg search option you want here it can toggle with
+        -- show_option function
+      }
+    },
+  }
+})
 
 
 -- [[ Configure Treesitter ]]
@@ -494,7 +592,7 @@ require('formatter').setup {
 local servers = {
   -- clangd = {},
   -- gopls = {},
-  pyright = {},
+  -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
 
@@ -604,6 +702,22 @@ vim.keymap.set('n', '<leader>T', ':NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>td', ':ToggleDiag<CR>') -- Toggle the diagnostics
 
 vim.keymap.set('n', '<leader>fw', ':FormatWrite<CR>') -- Format Write
+
+-- Spectre Maps
+
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+    desc = "Toggle Spectre"
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -116,6 +116,7 @@ alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/sc
 alias rr='ranger'
 alias dkc='docker-compose'
 alias dkpa='docker ps -a'
+alias lucius='python3 -m src.tools.lucius'
 # Git related
 alias gs='git status'
 alias ga='git add'
