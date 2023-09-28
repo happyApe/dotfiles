@@ -98,6 +98,8 @@ require('packer').startup(function(use)
 
   -- File Browser with Telescope
   use { 'nvim-telescope/telescope-file-browser.nvim' }
+  use { 'nvim-telescope/telescope-project.nvim' }
+
 
   -- Spectre for search and replace
   use {'nvim-pack/nvim-spectre', requires = { 'nvim-lua/plenary.nvim' } }
@@ -220,11 +222,6 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
--- Set colorscheme
-vim.o.termguicolors = true
--- vim.cmd [[colorscheme carbonfox]] -- Like the old vim colors
--- vim.cmd [[colorscheme onedark]]
-
 
 -- setup must be called before loading the colorscheme
 -- Default options:
@@ -251,8 +248,12 @@ require("gruvbox").setup({
   transparent_mode = false,
 })
 
+-- Set colorscheme
+vim.o.termguicolors = true
+vim.cmd [[colorscheme carbonfox]] -- Like the old vim colors
+-- vim.cmd [[colorscheme onedark]]
 vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox]])
+-- vim.cmd([[colorscheme gruvbox]])
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -288,7 +289,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'gruvbox-material',
+    theme = 'carbonfox',
     component_separators = '|',
     section_separators = '',
   },
@@ -371,7 +372,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 require('telescope').load_extension('fzf')
-
+require'telescope'.load_extension('project')
 
 
 -- See `:help telescope.builtin`
@@ -393,6 +394,12 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader>fb', require('telescope').extensions.file_browser.file_browser,
   { desc = '[F]ile [B]rowser' })
 vim.keymap.set('n', '<leader>gb', require('telescope.builtin').git_branches, { desc = '[G]it [B]ranches' })
+vim.keymap.set(
+        'n',
+        '<C-p>',
+        ":lua require'telescope'.extensions.project.project{display_type = 'full'}<CR>",
+        {noremap = true, silent = true}
+)
 
 -- Spectre Setup
 require('spectre').setup({
@@ -591,7 +598,13 @@ require('formatter').setup {
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {
+    completeUnimported = true,
+    usePlaceholders = true,
+    analyses={
+      unusedparams = true,
+    }
+  },
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},

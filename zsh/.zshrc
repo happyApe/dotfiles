@@ -181,3 +181,4 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
