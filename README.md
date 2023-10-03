@@ -5,8 +5,15 @@
 ```stow <dir_name> ```
 this will create a symlink at approriate place for the respective dotfile
 
+### NvChad-based Neovim Setup:
 
-### Neovim Setup Requirements:
+- [Install NvChad](https://nvchad.com/docs/quickstart/install): 
+- After installation, let the packages be installed
+- ``` stow nvim ``` if gives errors, then do ``` stow nvim --adopt```
+- If required, do a "git restore ." for nvim folder in dotfiles repo, then sync should be done
+
+
+### Old Neovim (custom-init.lua) Setup Requirements:
 - [Packer.nvim](https://github.com/wbthomason/packer.nvim): used as a package/plugin manager for nvim
 - After installation, Execute `:PackerInstall` in Normal Mode
 - Source the config for first time, by executing `:so %` in the init.lua file
