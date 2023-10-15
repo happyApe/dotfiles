@@ -1,6 +1,7 @@
 -- n, v, i, t = mode names
 
 local M = {}
+local diagnostic_active = true
 
 M.general = {
   i = {
@@ -194,7 +195,7 @@ M.lspconfig = {
       "LSP references",
     },
 
-    ["<leader>f"] = {
+    ["go"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }
       end,
@@ -213,6 +214,19 @@ M.lspconfig = {
         vim.diagnostic.goto_next { float = { border = "rounded" } }
       end,
       "Goto next",
+    },
+
+    ["<leader>td"] = {
+      function()
+        diagnostic_active = not diagnostic_active
+        if diagnostic_active then
+          vim.diagnostic.show()
+        else
+          vim.diagnostic.hide()
+        end
+      end,
+      "Toggle Diagnostic"
+
     },
 
     ["<leader>q"] = {
