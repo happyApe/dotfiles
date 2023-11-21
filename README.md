@@ -5,12 +5,9 @@
 ```stow <dir_name> ```
 this will create a symlink at approriate place for the respective dotfile
 
-### NvChad-based Neovim Setup:
+### LazyVim inspired:
 
-- [Install NvChad](https://nvchad.com/docs/quickstart/install)
-- After installation, let the packages be installed
-- ``` stow nvim ``` if gives errors, then do ``` stow nvim --adopt```
-- If required, do a ```git restore .``` for nvim folder in dotfiles repo, then sync should be done
+- Just do ``` stow nvim ```, Let Lazy do the magic!
 
 
 ### Old Neovim (custom-init.lua) Setup Requirements:
