@@ -24,6 +24,13 @@ return {
       {
         "nvim-telescope/telescope-file-browser.nvim",
       },
+      {
+        "debugloop/telescope-undo.nvim",
+        keys = { { "<leader>U", "<cmd>Telescope undo<cr>" } },
+        config = function()
+          require("telescope").load_extension("undo")
+        end,
+      },
     },
     opts = function(_, opts)
       local actions = require("telescope.actions")
@@ -81,6 +88,7 @@ return {
             ["<CR>"] = multi_open,
           },
         },
+        sorting_strategy = "descending",
         layout_strategy = "flex",
         layout_config = {
           horizontal = {
@@ -102,15 +110,50 @@ return {
         lsp_references = { jump_type = "never" },
         lsp_definitions = { jump_type = "never" },
         buffers = { initial_mode = "normal" },
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+        },
+        live_grep = {
+          -- file_ignore_patterns = { "node_modules", ".git", ".venv" },
+          additional_args = function(_)
+            return { "--hidden" }
+          end,
+        },
+        vimgrep_arguments = {
+          "rg",
+          "--hidden",
+          "--no-heading",
+          "--glob",
+          -- "--color=never",
+          -- "--with-filename",
+          -- "--line-number",
+          -- "--column",
+          -- "--smart-case",
+          -- "-u", -- thats the new thing
+        },
+
+        git_status = {
+          git_icons = {
+            added = " ",
+            changed = " ",
+            copied = " ",
+            deleted = " ",
+            renamed = "➡",
+            unmerged = " ",
+            untracked = " ",
+          },
+        },
       })
       opts.extensions = {
         project = {
           base_dirs = {
+            { path = "~/CU/Fall-2023" },
             { path = "~/Playground" },
             -- { path = "~/.config/nvim/" },
-            { path = "~/CU/Fall-2023/" },
             -- { path = "~/dotfiles/nvim/" },
           },
+          order_by = "asc",
+          search_by = "title",
         },
         undo = {
           side_by_side = true,
