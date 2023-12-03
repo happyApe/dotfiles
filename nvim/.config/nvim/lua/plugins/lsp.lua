@@ -26,6 +26,70 @@ end
 return {
 
   {
+    "L3MON4D3/LuaSnip",
+    keys = function()
+      return {}
+    end,
+  },
+  -- then: setup supertab in cmp
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-emoji",
+    },
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+
+      local luasnip = require("luasnip")
+      local cmp = require("cmp")
+
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+            -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+            -- this way you will only jump inside the snippet region
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+      })
+    end,
+  },
+
+  {
+    "folke/neodev.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local neodev_status_ok, neodev = pcall(require, "neodev")
+
+      if not neodev_status_ok then
+        return
+      end
+
+      neodev.setup()
+    end,
+  },
+
+  {
     "williamboman/mason.nvim",
 
     opts = function(_, opts)
@@ -35,7 +99,7 @@ return {
         "ruff", -- linter (but used as formatter)
         "pyright", -- lsp
         "black", -- formatter
-        "mypy", -- linter
+        -- "mypy", -- linter
 
         -- lua
         "lua-language-server", -- lsp
@@ -62,20 +126,35 @@ return {
         "gopls", -- lsp
         "golangci-lint-langserver", -- lsp
         "gofumpt", -- formatter
-        "goimports", -- formatter
+        -- "goimports", -- formatter
         "gci", -- formatter, replaces goimports
         "golangci-lint", -- linter (its binary is required by golanci-lint-langserver?)
-        "gomodifytags", -- code actions
+        -- "gomodifytags", -- code actions
         -- "impl", -- code actions
 
         -- protobuf
         "buf-language-server", -- lsp (prototype, not feature-complete yet, rely on buf for now)
         "buf", -- formatter, linter
         "protolint", -- linter
+
+        -- containers
+        -- "hadolint", -- linter
+        -- "dockerfile-language-server",
+        -- "docker-compose-language-service",
       }
 
+      -- extend opts.ensure_installed
       opts.ensure_installed = opts.ensure_installed or {}
       vim.list_extend(opts.ensure_installed, ensure_installed)
+
+      -- remove from opts.ensure_installed
+      -- NOTE: this removes tooling because Mason provides a version
+      -- built for intel machines on macOS. Instead, these are provided
+      -- with the proper architecture via brew.
+      local ensure_not_installed = { "shellcheck", "hadolint" }
+      opts.ensure_installed = vim.tbl_filter(function(tool)
+        return not vim.tbl_contains(ensure_not_installed, tool)
+      end, opts.ensure_installed)
     end,
   },
 
@@ -201,30 +280,30 @@ return {
     end,
   },
 
-  {
-    "mfussenegger/nvim-lint",
-    -- https://github.com/mfussenegger/nvim-lint
-    enabled = true,
-    opts = function(_, opts)
-      local linters = require("lint").linters
-      linters.mypy.cmd = prefer_bin_from_venv("mypy")
-      linters.sqlfluff.args = vim.list_extend({ "--dialect", "postgres" }, linters.sqlfluff.args)
-
-      local linters_by_ft = {
-        -- this extends lazyvim's nvim-lint setup
-        -- https://www.lazyvim.org/extras/linting/nvim-lint
-        protobuf = { "buf", "protolint" },
-        python = { "mypy" },
-        sh = { "shellcheck" },
-        sql = { "sqlfluff" },
-        yaml = { "yamllint" },
-      }
-
-      -- extend opts.linters_by_ft
-      for ft, linters_ in pairs(linters_by_ft) do
-        opts.linters_by_ft[ft] = opts.linters_by_ft[ft] or {}
-        vim.list_extend(opts.linters_by_ft[ft], linters_)
-      end
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-lint",
+  --   -- https://github.com/mfussenegger/nvim-lint
+  --   enabled = true,
+  --   opts = function(_, opts)
+  --     local linters = require("lint").linters
+  --     linters.mypy.cmd = prefer_bin_from_venv("mypy")
+  --     linters.sqlfluff.args = vim.list_extend({ "--dialect", "postgres" }, linters.sqlfluff.args)
+  --
+  --     local linters_by_ft = {
+  --       -- this extends lazyvim's nvim-lint setup
+  --       -- https://www.lazyvim.org/extras/linting/nvim-lint
+  --       protobuf = { "buf", "protolint" },
+  --       python = { "mypy" },
+  --       sh = { "shellcheck" },
+  --       sql = { "sqlfluff" },
+  --       yaml = { "yamllint" },
+  --     }
+  --
+  --     -- extend opts.linters_by_ft
+  --     for ft, linters_ in pairs(linters_by_ft) do
+  --       opts.linters_by_ft[ft] = opts.linters_by_ft[ft] or {}
+  --       vim.list_extend(opts.linters_by_ft[ft], linters_)
+  --     end
+  --   end,
+  -- },
 }
