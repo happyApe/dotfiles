@@ -182,3 +182,4 @@ alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
+alias nv='nvim'
