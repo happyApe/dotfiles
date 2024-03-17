@@ -1,5 +1,28 @@
 -- You can add your own plugins here or in other files in this directory!
 return {
+	{ "mbbill/undotree" },
+	{
+		"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",
+		config = function()
+			require("toggle_lsp_diagnostics").init(
+				{ start_on = true },
+				{ underline = true, virtual_text = { prefix = "XXX", spacing = 5 } }
+			) -- Toggle LSP linter
+		end,
+	},
+
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		version = "*",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("neo-tree").setup({})
+		end,
+	},
 	{
 		"smoka7/hop.nvim",
 		version = "*",
