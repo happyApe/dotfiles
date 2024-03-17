@@ -154,12 +154,6 @@ unset __conda_setup
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smartyape/ScaleTorch/torch_distributed/google-cloud-sdk/completion.zsh.inc'; fi
-
 # poetry
 export PATH="/Users/smartyape/.local/bin:$PATH"
 
@@ -183,3 +177,9 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
 alias nv='nvim'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/smartyape/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smartyape/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/smartyape/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smartyape/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
