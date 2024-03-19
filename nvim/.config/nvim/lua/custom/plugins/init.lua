@@ -1,5 +1,17 @@
 -- You can add your own plugins here or in other files in this directory!
 return {
+	{
+		"ThePrimeagen/harpoon",
+		dependencies = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope.nvim" } },
+		keys = {
+			{ "<leader>ah", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "Harpoon Menu" },
+			{ "<leader>aa", ":lua require('harpoon.mark').add_file()<CR>", desc = "add file as marked" },
+			{ "<leader>ad", ":lua require('harpoon.mark').rm_file()<CR>", desc = "Remove file" },
+			{ "<leader>acl", ":lua require('harpoon.mark').clear_all()<CR>", desc = "Clear shit" },
+			{ "<leader>aj", ":lua require('harpoon.ui').nav_next()<CR>", desc = "Next file " },
+			{ "<leader>ak", ":lua require('harpoon.ui').nav_prev()<CR>", desc = "Prev file " },
+		},
+	},
 	{ "mbbill/undotree" },
 	{
 		"WhoIsSethDaniel/toggle-lsp-diagnostics.nvim",

@@ -110,6 +110,11 @@ vim.keymap.set("n", "<leader>j", "<C-w><C-j>", { desc = "Move focus to the lower
 vim.keymap.set("n", "<leader>k", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
+-- Hop Word -- My need to (:
+vim.keymap.set("n", "<leader>H", ":HopWord<CR>")
+
+-- Harpoon
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -646,7 +651,7 @@ require("lazy").setup({
 					-- Accept ([y]es) the completion.
 					--  This will auto-import if your LSP supports it.
 					--  This will expand snippets if the LSP sent a snippet.
-					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
