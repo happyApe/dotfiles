@@ -177,6 +177,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
 alias nv='nvim'
+alias lg='lazygit'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/smartyape/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smartyape/Downloads/google-cloud-sdk/path.zsh.inc'; fi
