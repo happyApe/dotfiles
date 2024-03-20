@@ -10,6 +10,11 @@ return {
 			{ "<leader>acl", ":lua require('harpoon.mark').clear_all()<CR>", desc = "Clear shit" },
 			{ "<leader>aj", ":lua require('harpoon.ui').nav_next()<CR>", desc = "Next file " },
 			{ "<leader>ak", ":lua require('harpoon.ui').nav_prev()<CR>", desc = "Prev file " },
+			{ "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>", desc = "1st file" },
+			{ "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", desc = "2nd file" },
+			{ "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", desc = "3rd file" },
+			{ "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>", desc = "4th file" },
+			{ "<leader>5", ":lua require('harpoon.ui').nav_file(5)<CR>", desc = "5th file" },
 		},
 	},
 	{ "mbbill/undotree" },
@@ -32,7 +37,9 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			require("neo-tree").setup({})
+			require("neo-tree").setup({
+				window = { position = "left" },
+			})
 		end,
 	},
 	{
