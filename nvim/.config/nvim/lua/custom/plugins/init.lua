@@ -38,7 +38,7 @@ return {
 		},
 		config = function()
 			require("neo-tree").setup({
-				window = { position = "left" },
+				window = { position = "right" },
 			})
 		end,
 	},
@@ -87,8 +87,8 @@ return {
 				all = {
 					syntax = {
 						keyword = "#FFFA3E",
-						func = "#00FFFF",
-						string = "#EE7EF8",
+						func = "#075FFF",
+						string = "#D936E8",
 						number = "#9300FF",
 						conditional = "#E77C0C",
 						variable = "#FFFFFF",

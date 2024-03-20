@@ -93,6 +93,7 @@ vim.keymap.set("n", "gA", 'ggVG"+y') -- If this doesn't work change + to * -- Co
 vim.keymap.set("n", "gY", "ggVGy") -- If this doesn't work change + to * -- Copy all to Clipboard
 
 vim.keymap.set("n", "<leader>e", "<Cmd>Neotree toggle<CR>")
+vim.keymap.set("n", "\\", "<Cmd>Neotree reveal <CR>")
 vim.keymap.set("n", "<leader>td", ":ToggleDiag<CR>") -- Toggle the diagnostics
 
 vim.keymap.set("n", "<leader>gs", ":Gitsigns toggle_linehl<CR>") -- Toggle the git diagnostics
