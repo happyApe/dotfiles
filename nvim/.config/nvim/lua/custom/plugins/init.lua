@@ -72,10 +72,40 @@ return {
 			vim.g.VM_mouse_mappings = 1
 		end,
 	},
+	{
+		"ellisonleao/gruvbox.nvim",
+		priority = 1000,
+		config = true,
+		opts = {
+			terminal_colors = true, -- add neovim terminal colors
+			undercurl = true,
+			underline = true,
+			bold = true,
+			italic = {
+				strings = true,
+				emphasis = true,
+				comments = true,
+				operators = false,
+				folds = true,
+			},
+			strikethrough = true,
+			invert_selection = false,
+			invert_signs = false,
+			invert_tabline = false,
+			invert_intend_guides = false,
+			inverse = true, -- invert background for search, diffs, statuslines and errors
+			contrast = "hard", -- can be "hard", "soft" or empty string
+			palette_overrides = {},
+			overrides = {},
+			dim_inactive = false,
+			transparent_mode = false,
+		},
+	},
 	{ -- Custom Theme inspired from original VIM
 		"EdenEast/nightfox.nvim", -- colorscheme
 		opts = {
 			options = {
+				terminal_colors = true,
 				styles = {
 					comments = "italic",
 					functions = "bold",
@@ -87,7 +117,7 @@ return {
 				all = {
 					syntax = {
 						keyword = "#FFFA3E",
-						func = "#075FFF",
+						func = "#00FFFF",
 						string = "#D936E8",
 						number = "#9300FF",
 						conditional = "#E77C0C",
