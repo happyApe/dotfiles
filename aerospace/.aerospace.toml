@@ -112,7 +112,8 @@ outer.right =      0
 # '''
 
 
-alt-f = 'fullscreen'
+alt-ctrl-enter = 'fullscreen' # like rectangle
+alt-shift-r = 'reload-config'
 alt-ctrl-f = 'layout floating tiling'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
@@ -208,8 +209,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around prev'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
-alt-shift-enter = 'mode apps'
-alt-shift-r = 'reload-config'
 
 alt-a = 'exec-and-forget open -a /Applications/Arc.app'
 alt-t = 'exec-and-forget open -a /Applications/Warp.app'
