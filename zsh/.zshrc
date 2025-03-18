@@ -6,10 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/smartyape/.oh-my-zsh"
+export ZSH="/Users/daddyduck/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -105,14 +105,14 @@ source $ZSH/oh-my-zsh.sh
 # export EDITOR='vimx'
 # export EDITOR='vim'
 # alias tmux='tmux -u'
-alias vocab='/Users/smartyape/Playground/Build-My-Vocab/vocab.py'
-alias startup='/Users/smartyape/Playground/shell_scripts/launch.sh && exit'
-alias work-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/work-tmux.sh'
-alias fun-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/fun-tmux.sh'
-alias round-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/round-tmux.sh'
-alias grace-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/grace-tmux.sh'
-alias acd-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/acd-tmux.sh'
-alias scaletorch-tmux='/Users/smartyape/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
+alias vocab='/Users/daddyduck/Playground/Build-My-Vocab/vocab.py'
+alias startup='/Users/daddyduck/Playground/shell_scripts/launch.sh && exit'
+alias work-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/work-tmux.sh'
+alias fun-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/fun-tmux.sh'
+alias round-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/round-tmux.sh'
+alias grace-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/grace-tmux.sh'
+alias acd-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/acd-tmux.sh'
+alias scaletorch-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/scaletorch-tmux.sh'
 alias rr='ranger'
 alias dkc='docker-compose'
 alias dkpa='docker ps -a'
@@ -139,7 +139,7 @@ export LANG=en_US.UTF-8
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # poetry
-export PATH="/Users/smartyape/.local/bin:$PATH"
+export PATH="/Users/daddyduck/.local/bin:$PATH"
 
 
 # Requires https://github.com/caarlos0/timer to be installed
@@ -164,22 +164,22 @@ alias nv='nvim'
 alias lg='lazygit'
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/smartyape/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smartyape/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/daddyduck/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/daddyduck/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/smartyape/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smartyape/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/daddyduck/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/daddyduck/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/smartyape/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/Users/daddyduck/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/smartyape/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/smartyape/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/Users/daddyduck/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/daddyduck/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/smartyape/miniconda3/bin:$PATH"
+        export PATH="/Users/daddyduck/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -188,3 +188,4 @@ unset __conda_setup
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+source ~/powerlevel10k/powerlevel10k.zsh-theme
