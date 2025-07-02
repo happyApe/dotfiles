@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -15,7 +8,7 @@ export ZSH="/Users/daddyduck/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="robin"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -127,6 +120,7 @@ alias gr='git restore'
 alias gco='git checkout'
 alias gp='git pull'
 alias gph='git push'
+alias gsh='git stash'
 
 # For using tab to autocomplete
 bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
@@ -145,47 +139,30 @@ export PATH="/Users/daddyduck/.local/bin:$PATH"
 # Requires https://github.com/caarlos0/timer to be installed
 # brew install caarlos0/tap/timer
 # brew install terminal-notifier
-
-# Mac setup for pomo
-alias work="timer 60m && terminal-notifier -message 'Pomodoro'\
-        -title 'Work Timer is up! Take a Break 😌'\
-        -sound Crystal"
-        
-alias rest="timer 10m && terminal-notifier -message 'Pomodoro'\
-        -title 'Break is over! Get back to work 🤓'\
-        -sound Heroine"
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
 alias nv='nvim'
 alias lg='lazygit'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/daddyduck/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/daddyduck/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/daddyduck/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/daddyduck/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/daddyduck/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/daddyduck/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/daddyduck/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/daddyduck/miniconda3/bin:$PATH"
+        export PATH="/opt/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_complet# ~/.zshrc
+
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
