@@ -164,5 +164,5 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_complet# ~/.zshrc
 
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/half-life.omp.json)"
