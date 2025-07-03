@@ -1,0 +1,101 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground": "#4B0082",
+          "background": "#E6D7F0",
+          "template": " \uf17c ",
+          "properties": {
+            "style": "icon"
+          }
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#00474E",
+          "background": "#D8E2CF",
+          "template": " \uea83  {{ .Path }} ",
+          "properties": {
+            "folder_separator_icon": " \ue0b1 ",
+            "home_icon": "~",
+            "style": "folder"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#795548",
+          "background": "#F2EED3",
+          "template": " \uf408 {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "properties": {
+            "branch_template": "{{ .Branch }}",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          }
+        },
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "#1B5E20",
+          "background": "#D5E8D4",
+          "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+          "properties": {
+            "fetch_version": true
+          }
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "#E65100",
+          "background": "#F9E8D2",
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
+          "properties": {
+            "display_mode": "files",
+            "fetch_virtual_env": false
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "#263238",
+          "background": "#DEE5E8",
+          "template": " \uf43a {{ .FormattedMs }}\u2800",
+          "properties": { "always_enabled": false }
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "background": "#92C5C0",
+          "background_templates": ["{{ if .Error }}#E9AEB2{{ end }}"],
+          "properties": { "always_enabled": true },
+          "template": "{{if .Error }} \uf00d {{else}} \uf00c {{end}}"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "template": " \ue285 "
+        }
+      ]
+    }
+  ],
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "final_space": true,
+  "version": 3,
+  "author": "Sayantan",
+  "description": "A soothing pastel-colored theme for Oh My Posh"
+}

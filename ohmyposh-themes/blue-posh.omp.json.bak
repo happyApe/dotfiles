@@ -1,0 +1,119 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "final_space": true,
+    "version" : 2,
+    "blocks": [
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "background" : "#68A8FE",
+                    "foreground" : "#1a1a1a",
+                    "leading_diamond": "\u256d\u2500\ue0b6",
+                    "properties": {
+                        "style": "folder"
+                    },
+                    "style": "diamond",
+                    "template": "\ue5ff  {{ .Path  }} ",
+                    "type": "path"
+                },
+                {
+                    "background" : "#5E86ED",
+                    "style": "powerline",
+                    "template": " ​ ",
+                    "type": "text"
+                },
+                {
+                    "background" : "#1E58A5",
+                    "style": "powerline",
+                    "template": " ​ ",
+                    "type": "text"
+                },
+                {
+                    "background" : "#334778",
+                    "style": "powerline",
+                    "template": " ​ ",
+                    "type": "text"
+                },
+                {
+                    "foreground" : "#13470c",
+                    "style": "plain",
+                    "template": " \uf120  {{ .Name }} ",
+                    "type": "shell"
+                },
+                {
+                
+                    "foreground": "#8b5b85",
+                    "properties": {
+                        "style": "roundrock",
+                        "threshold": 0
+                    },
+                    "style": "plain",
+                    "template": "  \uf252 {{ .FormattedMs }} ",
+                    "type": "executiontime"
+                },
+                {
+                    
+                    "foreground" : "#b1b1b1",
+                    "style": "powerline",
+                    "properties": {
+                        "branch_icon": "\ue725 ",
+                        "fetch_stash_count": true,
+                        "fetch_upstream_icon": true
+                    },
+                    "template": "  {{ .UpstreamIcon }} {{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }}   ",
+                    "type": "git"
+                },
+                {
+                    "foreground" : "#6ec41f",
+                    "style": "plain",
+                    "template": "\ue235 {{ .Full }}",
+                    "type": "python"
+                },
+                {
+                    "foreground" : "#0b7e07",
+                    "style": "plain",
+                    "template": "\ue718 {{ .Full }}  ",
+                    "type": "node"
+                },
+                {
+                    "style": "plain",
+                    "foreground" : "#c93838",
+                    "template": "\ue71e  {{ .Full }}",
+                    "type": "npm"
+                },
+                {
+                    "style": "plain",
+                    "foreground" : "#4b96d3",
+                    "template": "  \uf308 {{ .Context }}",
+                    "type": "docker"
+                },
+                {
+                    "foreground" : "#243f8b",
+                    "style": "plain",
+                    "template": "\uebd8 {{ .Name }}",
+                    "type": "az"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "foreground": "#2cb0e4",
+                    "leading_diamond": "<#2CB0E4>\u2570<#2CB0E4>\u2500",
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "diamond",
+                    "template": " \ue285<#34D0DE>\ue285",
+                    "type": "exit"
+                }
+            ],
+            "type": "prompt"
+        }
+    ]
+}
