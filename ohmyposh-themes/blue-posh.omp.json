@@ -49,7 +49,7 @@
             "cache_duration": "none"
           },
           "template": " \uf120  {{ .Name }} ",
-          "foreground": "#13470c",
+          "foreground": "#28ee0d",
           "type": "shell",
           "style": "plain"
         },
@@ -60,7 +60,7 @@
             "threshold": 0
           },
           "template": "  \uf252 {{ .FormattedMs }} ",
-          "foreground": "#8b5b85",
+          "foreground": "#ffe60d",
           "type": "executiontime",
           "style": "plain"
         },
@@ -73,7 +73,7 @@
             "fetch_upstream_icon": true
           },
           "template": " \uf408 {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-          "foreground": "#b1b1b1",
+          "foreground": "#ffffff",
           "type": "git",
           "style": "powerline"
         },
