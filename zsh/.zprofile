@@ -15,7 +15,7 @@ export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export TMUX_CONF=~/.config/tmux/tmux.conf
 
 # Starship PATH
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export STARSHIP_CONFIG=~/.config/starship.toml
 
 # Path to your oh-my-zsh installation.
 # NOTE : Disabled Shell Prompt: Currently using Starship
