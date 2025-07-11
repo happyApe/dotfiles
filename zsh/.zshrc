@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+plugins=(git zsh-autosuggestions)
+
 source $ZSH/oh-my-zsh.sh
 
 # Starship 
@@ -17,38 +19,9 @@ eval "$(zoxide init zsh)"
 # FZF
 eval "$(fzf --zsh)"
 
-plugins=(git zsh-autosuggestions)
 
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# alias vim='vimx'
-# export EDITOR='vimx'
-# export EDITOR='vim'
-# alias tmux='tmux -u'
+# Aliases
 alias vocab='/Users/daddyduck/Playground/Build-My-Vocab/vocab.py'
 alias startup='/Users/daddyduck/Playground/shell_scripts/launch.sh && exit'
 alias work-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/work-tmux.sh'
@@ -61,6 +34,7 @@ alias rr='ranger'
 alias dkc='docker-compose'
 alias dkpa='docker ps -a'
 alias lucius='python3 -m src.tools.lucius'
+
 # Git related
 alias gs='git status'
 alias ga='git add'
@@ -89,7 +63,6 @@ export LANG=en_US.UTF-8
 #
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
 alias nv='nvim'
 alias cd='z'
 alias lg='lazygit'
