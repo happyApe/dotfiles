@@ -144,6 +144,7 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export PATH="/opt/homebrew/opt/go@1.19.1/bin:$PATH"
 alias nv='nvim'
+alias cd='z'
 alias lg='lazygit'
 
 # >>> conda initialize >>>
