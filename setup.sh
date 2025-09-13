@@ -83,7 +83,6 @@ install_packages() {
 		"luarocks"
 		"prettier"
 		"make"
-		"qmk"
 		"ripgrep"
 	)
 
