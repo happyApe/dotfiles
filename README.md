@@ -1,9 +1,31 @@
-## GNU Stow to manage dotfiles ###
+## Dotfiles Setup
 
-### Usage :
+This repository contains my personal dotfiles and a setup script for macOS development environment.
 
-```stow <dir_name> ```
-this will create a symlink at approriate place for the respective dotfile
+### Quick Setup
+
+Run the setup script to install everything:
+
+```bash
+./setup.sh
+```
+
+This will install:
+- Homebrew and essential packages
+- Oh My Zsh
+- Terminal emulators (Ghostty, WezTerm)
+- Development tools (Node.js, Neovim, tmux, etc.)
+- Fonts and UI applications
+- Dotfiles configuration via GNU Stow
+
+### Manual Usage with Stow
+
+If you prefer manual setup:
+
+```bash
+stow <dir_name>
+```
+This will create a symlink at appropriate place for the respective dotfile
 
 ### LazyVim inspired:
 
