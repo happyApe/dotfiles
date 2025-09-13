@@ -142,6 +142,7 @@ install_packages() {
 		"font-hack-nerd-font"
 		"font-jetbrains-mono-nerd-font"
 		"font-sf-pro"
+		"git-credential-manager"
 	)
 
 	for cask in "${casks[@]}"; do
