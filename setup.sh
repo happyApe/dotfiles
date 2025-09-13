@@ -42,7 +42,15 @@ install_homebrew() {
     if ! command -v brew &> /dev/null; then
         log_info "Installing Homebrew..."
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        log_success "Homebrew installed"
+
+        # Add Homebrew to PATH for current session
+        if [[ -f "/opt/homebrew/bin/brew" ]]; then
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        elif [[ -f "/usr/local/bin/brew" ]]; then
+            eval "$(/usr/local/bin/brew shellenv)"
+        fi
+
+        log_success "Homebrew installed and added to PATH"
     else
         log_success "Homebrew already installed"
     fi
@@ -52,7 +60,6 @@ install_homebrew() {
 install_packages() {
     # Taps
     log_info "Tapping Brew..."
-    brew tap homebrew/cask-fonts
     brew tap FelixKratz/formulae
 
     # Formulae
