@@ -136,9 +136,9 @@ install_packages() {
 
 	# Casks
 	casks=(
-		"raycast"
-		"karabiner-elements"
-		"keycastr"
+		# "raycast"
+		# "karabiner-elements"
+		# "keycastr"
 		"font-hack-nerd-font"
 		"font-jetbrains-mono-nerd-font"
 		"font-sf-pro"
