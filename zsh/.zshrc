@@ -5,11 +5,11 @@ plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
-# Starship 
+# Starship
 bindkey -v
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
+if [[ "${widgets[zle - keymap - select]#user:}" == "starship_zle-keymap-select" ||
+	"${widgets[zle - keymap - select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+	zle -N zle-keymap-select ""
 fi
 eval "$(starship init zsh)"
 
@@ -18,8 +18,6 @@ eval "$(zoxide init zsh)"
 
 # FZF
 eval "$(fzf --zsh)"
-
-
 
 # Aliases
 alias vocab='/Users/daddyduck/Playground/Build-My-Vocab/vocab.py'
@@ -33,7 +31,7 @@ alias scaletorch-tmux='/Users/daddyduck/Playground/shell_scripts/tmux_scripts/sc
 alias rr='ranger'
 alias dkc='docker-compose'
 alias dkpa='docker ps -a'
-alias lucius='python3 -m src.tools.lucius'
+alias sv='source .venv/bin/activate'
 
 # Git related
 alias gs='git status'
@@ -41,14 +39,14 @@ alias ga='git add'
 alias gc='git commit'
 alias gd='git diff'
 alias gl='git log'
-alias gr='git restore'
+alias gr='git rebase'
 alias gco='git checkout'
 alias gp='git pull'
 alias gph='git push'
 alias gsh='git stash'
 
 # For using tab to autocomplete
-bindkey '^[[Z' autosuggest-accept  # shift + tab  | autosuggest
+bindkey '^[[Z' autosuggest-accept # shift + tab  | autosuggest
 
 # For tmux UTF-8 Characters to show up properly
 export LC_ALL=en_US.UTF-8
@@ -69,24 +67,28 @@ alias lg='lazygit'
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+	eval "$__conda_setup"
 else
-    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/miniconda3/bin:$PATH"
-    fi
+	if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+		. "/opt/miniconda3/etc/profile.d/conda.sh"
+	else
+		export PATH="/opt/miniconda3/bin:$PATH"
+	fi
 fi
 unset __conda_setup
 
 eval "$(zoxide init zsh)"
 
-# Starship 
+# Starship
 bindkey -v
-if [[ "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select" || \
-      "${widgets[zle-keymap-select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
-    zle -N zle-keymap-select "";
+if [[ "${widgets[zle - keymap - select]#user:}" == "starship_zle-keymap-select" ||
+	"${widgets[zle - keymap - select]#user:}" == "starship_zle-keymap-select-wrapped" ]]; then
+	zle -N zle-keymap-select ""
 fi
 eval "$(starship init zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mini-ducky/.lmstudio/bin"
+# End of LM Studio CLI section

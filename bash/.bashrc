@@ -128,3 +128,8 @@ export EDITOR='vim'
 export PATH=$PATH:/home/skipper/bin
 
 source '/home/skipper/lib/azure-cli/az.completion'
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/mini-ducky/.lmstudio/bin"
+# End of LM Studio CLI section
+
