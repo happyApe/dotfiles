@@ -206,7 +206,7 @@ setup_dotfiles() {
 	for config in "${configs[@]}"; do
 		if [ -d "$config" ]; then
 			log_info "Stowing $config configuration..."
-			stow "$config"
+			stow --restow --target="$HOME" "$config"
 			log_success "$config configuration linked"
 		else
 			log_warning "$config directory not found, skipping..."
