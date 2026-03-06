@@ -12,7 +12,7 @@ font-family = Hack Nerd Font
 font-size = 16
 font-thicken = true
 
-focus-follows-mouse = true
+focus-follows-mouse = false
 macos-titlebar-style = tabs
 mouse-hide-while-typing = true
 cursor-style = block
