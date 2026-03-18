@@ -92,3 +92,11 @@ eval "$(starship init zsh)"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/mini-ducky/.lmstudio/bin"
 # End of LM Studio CLI section
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/quack/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# Added by Antigravity
+export PATH="/Users/quack/.antigravity/antigravity/bin:$PATH"

@@ -102,6 +102,7 @@ install_packages() {
 		"lazygit"
 		"tmux"
 		"neovim"
+		"mole",
 		"starship"
 		"tree-sitter"
 		"tree"
