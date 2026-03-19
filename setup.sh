@@ -78,6 +78,7 @@ install_packages() {
 		"bat"
 		"fd"
 		"zoxide"
+		"mole"
 		"lua"
 		"luajit"
 		"luarocks"
@@ -102,7 +103,6 @@ install_packages() {
 		"lazygit"
 		"tmux"
 		"neovim"
-		"mole",
 		"starship"
 		"tree-sitter"
 		"tree"
