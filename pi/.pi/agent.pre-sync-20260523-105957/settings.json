@@ -1,8 +1,8 @@
 {
   "lastChangelogVersion": "0.75.4",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.4",
-  "defaultThinkingLevel": "low",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "medium",
   "theme": "neovim-onedark-cool",
   "packages": [
     "npm:pi-web-access",
@@ -33,13 +33,15 @@
       "themes": []
     },
     "npm:@juicesharp/rpiv-todo",
+    "npm:pi-observational-memory",
     "git:github.com/multica-ai/andrej-karpathy-skills",
     "npm:@apmantza/greedysearch-pi",
     "npm:@wierdbytes/pi-facelift",
     "npm:@wierdbytes/pi-statusline",
     "npm:pi-markdown-preview",
+    "npm:pi-slopchop",
     "npm:pi-ui-hephaestus",
-    "npm:pi-slopchop"
+    "npm:@therynamo/pi-changed-files"
   ],
   "hephaestus": {
     "mutedTheme": false,
