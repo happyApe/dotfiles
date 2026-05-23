@@ -1,8 +1,8 @@
 {
-  "lastChangelogVersion": "0.75.4",
+  "lastChangelogVersion": "0.75.5",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.4",
-  "defaultThinkingLevel": "low",
+  "defaultThinkingLevel": "medium",
   "theme": "neovim-onedark-cool",
   "packages": [
     "npm:pi-web-access",
@@ -24,10 +24,9 @@
       "skills": [
         "skills/frontend-design/**",
         "skills/github/**",
-        "skills/mermaid/**",
         "skills/tmux/**",
         "skills/uv/**",
-        "skills/web-browser/**"
+        "skills/uv/**"
       ],
       "prompts": [],
       "themes": []
@@ -36,8 +35,6 @@
     "git:github.com/multica-ai/andrej-karpathy-skills",
     "npm:@apmantza/greedysearch-pi",
     "npm:@wierdbytes/pi-facelift",
-    "npm:@wierdbytes/pi-statusline",
-    "npm:pi-markdown-preview",
     "npm:pi-ui-hephaestus",
     "npm:pi-slopchop"
   ],
