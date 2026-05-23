@@ -3,8 +3,8 @@
 config-file = themes/rosepine
 window-save-state = always
 background = #000000
-background-opacity = 0.85
-background-blur-radius = 35
+background-opacity = 0.92
+background-blur-radius = 42
 theme = Dark Pastel
 
 # font-family = JetBrainsMonoNL Nerd Font 

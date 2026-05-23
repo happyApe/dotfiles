@@ -202,7 +202,7 @@ setup_dotfiles() {
 	backup_configs
 
 	# Stow the configurations
-	configs=("zsh" "tmux" "starship" "ghostty" "git" "bash" "vim")
+	configs=("zsh" "tmux" "starship" "ghostty" "git" "bash" "vim" "pi")
 
 	for config in "${configs[@]}"; do
 		if [ -d "$config" ]; then
@@ -231,6 +231,10 @@ backup_configs() {
 		"$HOME/.gitconfig"
 		"$HOME/.bashrc"
 		"$HOME/.vimrc"
+		"$HOME/.pi/agent/AGENTS.md"
+		"$HOME/.pi/agent/settings.json"
+		"$HOME/.pi/agent/models.json"
+		"$HOME/.pi/agent/zentui.json"
 	)
 
 	for file in "${files_to_backup[@]}"; do
@@ -245,6 +249,17 @@ backup_configs() {
 		rmdir "$backup_dir"
 		log_info "No existing configs to backup"
 	fi
+}
+
+# Install/update Pi packages from stowed settings
+setup_pi() {
+	if ! command -v pi &>/dev/null; then
+		log_warning "pi command not found; skipping Pi package install. Install pi, then run 'pi update --extensions'."
+		return
+	fi
+
+	log_info "Installing/updating Pi packages from ~/.pi/agent/settings.json..."
+	pi update --extensions || log_warning "Pi package update failed; run 'pi update --extensions' manually"
 }
 
 # Configure shell
@@ -293,6 +308,7 @@ main() {
 	configure_zsh_plugins
 	install_fonts
 	setup_dotfiles
+	setup_pi
 	configure_shell
 	final_setup
 
@@ -302,7 +318,8 @@ main() {
 	echo "  1. Restart your terminal"
 	echo "  2. Open Ghostty and verify your configuration"
 	echo "  3. Run 'tmux' to test tmux setup"
-	echo "  4. Your shell prompt should now be powered by Starship"
+	echo "  4. Run 'pi update --extensions' if Pi was installed after this setup"
+	echo "  5. Your shell prompt should now be powered by Starship"
 }
 
 # Run main function

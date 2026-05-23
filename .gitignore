@@ -1,2 +1,11 @@
 .DS_Store
 nvim/.config/nvim/lazy-lock.json
+
+# Pi generated state / secrets
+pi/.pi/agent/auth.json
+pi/.pi/agent/cache/
+pi/.pi/agent/sessions/
+pi/.pi/agent/npm/
+pi/.pi/agent/git/
+pi/.pi/agent/run-history.jsonl
+pi/.pi/agent/extensions/*/logs/

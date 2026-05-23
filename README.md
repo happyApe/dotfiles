@@ -4,7 +4,7 @@ Personal macOS dotfiles and a bootstrap script for a repeatable developer enviro
 
 ## Highlights
 - Automates Homebrew installation and keeps core packages, terminal tools, and fonts in sync.
-- Installs Oh My Zsh, configures plugins, and applies shell, tmux, Neovim, Ghostty, Starship, and other dotfiles.
+- Installs Oh My Zsh, configures plugins, and applies shell, tmux, Neovim, Ghostty, Starship, Pi, and other dotfiles.
 - Uses GNU Stow with `--restow` so existing symlinks and configs are refreshed safely.
 - Creates timestamped backups of existing configuration files before linking anything new.
 
@@ -22,7 +22,7 @@ The script will:
 - Verify macOS, install Homebrew if needed, and tap required formula sources.
 - Install command-line packages like `zsh-autosuggestions`, `fzf`, `ripgrep`, `neovim`, `tmux`, `starship`, and more.
 - Install GUI applications and fonts such as Ghostty and Nerd Fonts via Homebrew casks.
-- Install Oh My Zsh, configure shell defaults, and restow dotfiles into your home directory.
+- Install Oh My Zsh, configure shell defaults, restow dotfiles into your home directory, and refresh Pi packages when `pi` is available.
 - Run any final setup tasks (for example, initializing `conda` when available).
 
 When symlinking, existing files are backed up under `~/.config_backup_<timestamp>` and then replaced with links created via `stow --restow --target="$HOME"`.
@@ -56,6 +56,7 @@ stow --delete <dir>
 - `starship/` – Starship prompt configuration.
 - `git/` – Global Git configuration templates.
 - `vim/` – Legacy Vim configuration.
+- `pi/` – Pi agent settings, custom skills/extensions config, themes, and package list.
 - `aerospace/`, `karabiner/`, `ohmyposh-themes/`, etc. – Additional app and tooling configs ready to stow.
 
 ## Neovim Notes

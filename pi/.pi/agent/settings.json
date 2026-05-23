@@ -1,0 +1,56 @@
+{
+  "lastChangelogVersion": "0.75.4",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "medium",
+  "theme": "neovim-onedark-cool",
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-subagents",
+    "npm:context-mode",
+    "npm:pi-mcp-adapter",
+    "npm:@plannotator/pi-extension",
+    "git:github.com/jonjonrankin/pi-caveman",
+    "npm:@gotgenes/pi-permission-system",
+    {
+      "source": "git:github.com/mitsuhiko/agent-stuff",
+      "extensions": [
+        "extensions/files.ts",
+        "extensions/notify.ts",
+        "extensions/prompt-editor.ts",
+        "extensions/session-breakdown.ts",
+        "extensions/split-fork.ts"
+      ],
+      "skills": [
+        "skills/frontend-design/**",
+        "skills/github/**",
+        "skills/mermaid/**",
+        "skills/tmux/**",
+        "skills/uv/**",
+        "skills/web-browser/**"
+      ],
+      "prompts": [],
+      "themes": []
+    },
+    "npm:@juicesharp/rpiv-todo",
+    "npm:pi-observational-memory",
+    "git:github.com/multica-ai/andrej-karpathy-skills",
+    "npm:@apmantza/greedysearch-pi",
+    "npm:@wierdbytes/pi-facelift",
+    "npm:@wierdbytes/pi-statusline",
+    "npm:pi-markdown-preview",
+    "npm:pi-slopchop",
+    "npm:pi-ui-hephaestus",
+    "npm:@therynamo/pi-changed-files"
+  ],
+  "hephaestus": {
+    "mutedTheme": false,
+    "codeUnindent": true,
+    "labelText": "Thinking...",
+    "labelColor": "255,215,0",
+    "animationStyle": "wave",
+    "diffTheme": "github-dark ",
+    "diffSplitMinWidth": 150,
+    "diffSplitMinCodeWidth": 60
+  }
+}
